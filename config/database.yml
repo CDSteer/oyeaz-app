@@ -26,9 +26,10 @@
 
 development:
   adapter: postgresql
-  database: my_database_development
-  pool: 5
-  timeout: 5000
+  host: localhost
+  username: cdsteer94@gmail.com
+  database: Database
+
 test:
   adapter: postgresql
   database: my_database_test
