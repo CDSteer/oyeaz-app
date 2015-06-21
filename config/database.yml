@@ -27,8 +27,8 @@
 development:
   adapter: postgresql
   host: localhost
-  username: cdsteer94@gmail.com
-  database: Database
+  username: cdsteer
+  database: postgres
 
 test:
   adapter: postgresql
