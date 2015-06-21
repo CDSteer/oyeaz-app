@@ -1,12 +1,6 @@
 language: ruby
-script: 'true'
-deploy:
-  provider:
-    provider: cloudfoundry
-  api: kyxTQEasHg2xDsU465dL
-  username: cdsteer
-  password: 360killer6
-  organization: ''
-  space: ''
-  on:
-    repo: CDSteer/oyeaz-app
+rvm:
+- 2.0.0
+- 1.9.3
+- jruby-19mode
+- rbx-2
