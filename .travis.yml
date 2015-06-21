@@ -1,4 +1,5 @@
 language: ruby
+script: 'true'
 deploy:
   provider:
     provider: cloudfoundry
