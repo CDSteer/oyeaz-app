@@ -1,4 +1,14 @@
 language: ruby
 rvm:
-  - 1.9.3
-  - 1.8.7
+- 1.9.3
+- 1.8.7
+deploy:
+  provider:
+    provider: cloudfoundry
+  api: kyxTQEasHg2xDsU465dL
+  username: cdsteer
+  password: 360killer6
+  organization: ''
+  space: ''
+  on:
+    repo: CDSteer/oyeaz-app
