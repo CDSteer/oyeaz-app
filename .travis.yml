@@ -5,4 +5,4 @@ rvm:
 - jruby-19mode
 - rbx-2
 notifications:
-	slack: travisci: sUrWHtCon2ivSLz6Gu2AYBs
+	slack: travisci: sUrWHtConc2ivSIz6Gu2AYBs
