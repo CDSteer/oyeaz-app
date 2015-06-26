@@ -1,4 +1,5 @@
 language: ruby
+sudo: required
 rvm:
 - 2.0.0
 - 1.9.3
@@ -6,3 +7,4 @@ rvm:
 - rbx-2
 notifications:
   slack: oyeaz:sUrWHtConc2ivSIz6Gu2AYBs
+

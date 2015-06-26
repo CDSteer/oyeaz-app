@@ -27,8 +27,9 @@ ActiveRecord::Schema.define(version: 20150610124245) do
     t.string   "commenter"
     t.text     "body"
     t.integer  "article_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "authenticity_token"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   add_index "comments", ["article_id"], name: "index_comments_on_article_id", using: :btree

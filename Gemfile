@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'omniauth-facebook'
 
+gem 'rdoc-data', '~> 4.0.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'

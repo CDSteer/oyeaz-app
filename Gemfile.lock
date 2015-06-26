@@ -126,6 +126,8 @@ GEM
     rake (10.4.2)
     rdoc (4.2.0)
       json (~> 1.4)
+    rdoc-data (4.0.1)
+      rdoc (~> 4.0)
     sass (3.4.14)
     sass-rails (5.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -171,6 +173,7 @@ DEPENDENCIES
   omniauth-facebook
   pg
   rails (= 4.2.1)
+  rdoc-data (~> 4.0.1)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
@@ -179,4 +182,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.10.3
+   1.10.5
