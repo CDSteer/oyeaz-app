@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.2.0'
 gem 'omniauth-facebook'
 
 gem 'rdoc-data', '~> 4.0.1'
