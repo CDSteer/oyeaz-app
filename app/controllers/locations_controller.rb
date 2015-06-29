@@ -48,6 +48,7 @@ class LocationsController < ApplicationController
 
   private
     def getLocation
+    	@lat_lng = "0|0" 
 		@lat_lng = cookies[:lat_lng].split("|")
 		@latitude = @lat_lng.at(0)
 		@longitude = @lat_lng.at(1)
