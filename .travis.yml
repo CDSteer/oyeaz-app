@@ -7,4 +7,7 @@ rvm:
 - rbx-2
 notifications:
   slack: oyeaz:sUrWHtConc2ivSIz6Gu2AYBs
+addons:
+  code_climate:
+    repo_token: 8e3b7a649a5626bd4d38ca3f97d54d0cecd4c348a1b2f44551b80dc1598bb4f3
 

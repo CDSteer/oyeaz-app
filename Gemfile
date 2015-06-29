@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.2.0'
 gem 'omniauth-facebook'
 
 gem 'rdoc-data', '~> 4.0.1'
@@ -32,6 +32,7 @@ gem 'i18n', '~> 0.7.0'
 gem 'puma'
 gem 'rails_12factor', group: :production
 gem 'unicorn'
+gem "codeclimate-test-reporter", group: :test, require: nil
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
