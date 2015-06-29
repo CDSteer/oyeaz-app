@@ -7,6 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<% if current_user %>
+  <%- unless @lat_lng %>
+      <script>
+        getGeoLocation();
+      </script>
+  <%- end %>
+<% end %>
 <div id="user-widget">
   <% if current_user %>
     Welcome <strong><%= current_user.name %></strong>!
