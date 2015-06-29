@@ -4,6 +4,8 @@ gem 'omniauth-facebook'
 
 gem 'rdoc-data', '~> 4.0.1'
 
+gem 'geo_location', '~> 0.4.2'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use sqlite3 as the database for Active Record
