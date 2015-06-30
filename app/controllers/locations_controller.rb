@@ -1,5 +1,5 @@
 class LocationsController < ApplicationController
-	# localhost:3000/users/1/locations/new?latitude=1?longitude=1
+	# localhost:3000/users/1/locations/new?latitude=1&longitude=1
 	def index
 		
 	end
@@ -19,7 +19,7 @@ class LocationsController < ApplicationController
 			@location.save
 		else
 			@user = User.find(params[:user_id])
-			@location = Location.create(:latitude => params[:latitude], :longitude => params[:longitude], :user_id => @user.id)
+			@location = Location.create(:latitude => params[:latitude], :longitude => params[:longitude], :user_id => params[:user_id])
 			@js_response = ActiveSupport::JSON.encode(@location)
 			respond_to do |format|
 				format.json { render :json => @js_response} 
@@ -38,7 +38,13 @@ class LocationsController < ApplicationController
 			@location.update
 			redirect_to user_path
 		else
-			redirect_to root_path
+			@user = User.find(params[:user_id])
+			@location = Location.create(:latitude => params[:latitude], :longitude => params[:longitude], :user_id => @user.id)
+			@js_response = ActiveSupport::JSON.encode(@location)
+			respond_to do |format|
+				format.json { render :json => @js_response} 
+				format.html
+			end
 		end
 	end
  
