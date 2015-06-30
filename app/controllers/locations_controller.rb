@@ -15,11 +15,12 @@ class LocationsController < ApplicationController
 	def new
 		if current_user
 			getLocation
+			@user = User.find(params[:user_id])
 			@location = Location.create(:latitude => @latitude, :longitude => @longitude, :user_id => @user.id)
 			@location.save
 		else
 			@user = User.find(params[:user_id])
-			@location = Location.create(:latitude => params[:latitude], :longitude => params[:longitude], :user_id => params[:user_id])
+			@location = Location.create(:latitude => params[:latitude], :longitude => params[:longitude], :user_id => @user.id)
 			@js_response = ActiveSupport::JSON.encode(@location)
 			respond_to do |format|
 				format.json { render :json => @js_response} 
