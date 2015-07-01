@@ -1,0 +1,7 @@
+<% if current_user %>
+	<p>
+	  <strong>URL: </strong>
+	  <%= @content.url %>
+	</p>
+  <%= link_to 'Back', root_path %>
+<% end %>
