@@ -1,15 +1,15 @@
 class LocationsController < ApplicationController
 	# localhost:3000/users/1/locations/new?latitude=1&longitude=1
 	def index
-		
+
 	end
 
 	def show
 		if current_user
 			@user = User.find(params[:user_id])
-		else 
+		else
 			redirect_to root_path
-		end 
+		end
 	end
 
 	def new
@@ -23,7 +23,7 @@ class LocationsController < ApplicationController
 			@location = Location.create(:latitude => params[:latitude], :longitude => params[:longitude], :user_id => @user.id)
 			@js_response = ActiveSupport::JSON.encode(@location)
 			respond_to do |format|
-				format.json { render :json => @js_response} 
+				format.json { render :json => @js_response}
 				format.html
 			end
 			# redirect_to root_path
@@ -43,12 +43,12 @@ class LocationsController < ApplicationController
 			@location = Location.create(:latitude => params[:latitude], :longitude => params[:longitude], :user_id => @user.id)
 			@js_response = ActiveSupport::JSON.encode(@location)
 			respond_to do |format|
-				format.json { render :json => @js_response} 
+				format.json { render :json => @js_response}
 				format.html
 			end
 		end
 	end
- 
+
  	def destroy
  		if current_user
 			@location = Location.find(params[:user_id])
@@ -61,7 +61,7 @@ class LocationsController < ApplicationController
 
   private
     def getLocation
-    	@lat_lng = "0|0" 
+    	@lat_lng = "0|0"
 		@lat_lng = cookies[:lat_lng].split("|")
 		@latitude = @lat_lng.at(0)
 		@longitude = @lat_lng.at(1)

@@ -8,9 +8,11 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  resources :users do 
+  resources :users do
+    resources :contents
     resources :locations
   end
+
   resource :session
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]

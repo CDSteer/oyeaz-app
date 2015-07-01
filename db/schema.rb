@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150629103002) do
+ActiveRecord::Schema.define(version: 20150701163422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,15 @@ ActiveRecord::Schema.define(version: 20150629103002) do
 
   add_index "comments", ["article_id"], name: "index_comments_on_article_id", using: :btree
 
+  create_table "contents", force: :cascade do |t|
+    t.text     "url"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "contents", ["user_id"], name: "index_contents_on_user_id", using: :btree
+
   create_table "locations", force: :cascade do |t|
     t.float    "latitude"
     t.float    "longitude"
@@ -42,6 +51,15 @@ ActiveRecord::Schema.define(version: 20150629103002) do
   end
 
   add_index "locations", ["user_id"], name: "index_locations_on_user_id", using: :btree
+
+  create_table "user_contents", force: :cascade do |t|
+    t.text     "url"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "user_contents", ["user_id"], name: "index_user_contents_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "provider"
@@ -54,5 +72,7 @@ ActiveRecord::Schema.define(version: 20150629103002) do
   end
 
   add_foreign_key "comments", "articles"
+  add_foreign_key "contents", "users"
   add_foreign_key "locations", "users"
+  add_foreign_key "user_contents", "users"
 end
