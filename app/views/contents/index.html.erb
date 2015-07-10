@@ -1,13 +1,16 @@
 <h1>My Content</h1>
 <table>
   <tr>
-    <th><%= current_user.name%>'s</th>
+    <th><%= @user.name%>'s</th>
     <th>Content</th>
     <th colspan="2"></th>
   </tr>
   <% @contents.each do |content| %>
     <tr>
-      <td><a href=" <%=content.url%> "><%= content.url %></a></td>
+      <td>Item <%=content.id %></td>
+      <td><a href="<%=content.url%>">Link</a></td>
     </tr>
   <% end %>
 </table>
+<%= link_to 'Back', user_path(current_user) %>
+<%= link_to 'New', new_user_content_path %>

@@ -2,3 +2,6 @@
 <% if current_user %>
   <p> This is you :D </p>
 <% end %>
+<%= link_to "My content", user_contents_path(current_user) %>
+<%= link_to "My location", user_location_path(current_user.id, 1) %>
+<%= link_to "Update location", new_user_location_path(current_user) %>

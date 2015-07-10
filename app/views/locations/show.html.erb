@@ -1,11 +1,11 @@
 <% if current_user %>
 	<p>
 	  <strong>Latitude: </strong>
-	  <%= @user.location.latitude %>
+	  <%= current_user.location.latitude %>
 	</p>
-	 
+
 	<p>
 	  <strong>Longitude: </strong>
-	  <%= @user.location.longitude %>
+	  <%= current_user.location.longitude %>
 	</p>
 <% end %>

@@ -6,6 +6,8 @@ class CreateLocations < ActiveRecord::Migration
       t.references :user, index: true, foreign_key: true
 
       t.timestamps null: false
+
+      add_index(:locations, :user_id, :unique => true)
     end
   end
 end

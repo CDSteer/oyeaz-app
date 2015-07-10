@@ -18,6 +18,7 @@ class LocationsController < ApplicationController
 			@user = User.find(params[:user_id])
 			@location = Location.create(:latitude => @latitude, :longitude => @longitude, :user_id => @user.id)
 			@location.save
+			redirect_to user_location_path(current_user.id, @location.id) 
 		else
 			@user = User.find(params[:user_id])
 			@location = Location.create(:latitude => params[:latitude], :longitude => params[:longitude], :user_id => @user.id)
