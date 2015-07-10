@@ -39,9 +39,11 @@ end
 
 platforms :mswin do
 
+gem 'tzinfo-data'
   # gems specific to windows
 
 end
+#gem 'tzinfo-data'
 gem "codeclimate-test-reporter", group: :test, require: nil
 
 # Use ActiveModel has_secure_password
