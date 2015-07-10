@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-# ruby '2.2.0'
+#ruby '2.2.0'
 gem 'omniauth-facebook'
 
 gem 'rdoc-data', '~> 4.0.1'
@@ -29,9 +29,19 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'i18n', '~> 0.7.0'
-gem 'puma'
+
 gem 'rails_12factor', group: :production
-gem 'unicorn'
+platforms :ruby do # linux
+
+  gem 'unicorn'
+  gem 'puma'
+end
+
+platforms :mswin do
+
+  # gems specific to windows
+
+end
 gem "codeclimate-test-reporter", group: :test, require: nil
 
 # Use ActiveModel has_secure_password
