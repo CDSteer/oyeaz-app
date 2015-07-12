@@ -31,19 +31,17 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'i18n', '~> 0.7.0'
 
 gem 'rails_12factor', group: :production
-platforms :ruby do # linux
 
+platforms :ruby do # linux
   gem 'unicorn'
   gem 'puma'
 end
 
 platforms :mswin do
-
-gem 'tzinfo-data'
+  gem 'tzinfo-data'
   # gems specific to windows
-
 end
-#gem 'tzinfo-data'
+
 gem "codeclimate-test-reporter", group: :test, require: nil
 
 # Use ActiveModel has_secure_password
