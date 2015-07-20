@@ -8,4 +8,10 @@
 	  <strong>Longitude: </strong>
 	  <%= current_user.location.longitude %>
 	</p>
+	<%= link_to "Location", new_user_location_path(current_user) %>
+	<%= if @user.location
+	link_to 'Remove location', user_location_path(current_user.id, current_user.location.id),
+					method: :delete,
+					data: { confirm: 'Are you sure?' }
+	 end %>
 <% end %>

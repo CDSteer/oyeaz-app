@@ -12,13 +12,26 @@ class LocationsController < ApplicationController
 		end
 	end
 
+	# def create
+	# 	getLocation()
+	# 	put "hello"
+	# 	@user = User.find(params[:user_id])
+	# 	@location = @user.location.create(:latitude => @latitude, :longitude => @longitude)
+	# 	@location.save
+	# 	redirect_to user_location_path(current_user.id, @location.id)
+	# end
+
 	def new
 		if current_user
 			getLocation
 			@user = User.find(params[:user_id])
-			@location = Location.create(:latitude => @latitude, :longitude => @longitude, :user_id => @user.id)
-			@location.save
-			redirect_to user_location_path(current_user.id, @location.id) 
+			if @user.location
+				@location = @user.location.update(:latitude => @latitude, :longitude => @longitude, :user_id => @user.id)
+			else
+				@location = Location.create(:latitude => @latitude, :longitude => @longitude, :user_id => @user.id)
+				@location.save
+			end
+			redirect_to user_location_path(current_user.id, current_user.location.id)
 		else
 			@user = User.find(params[:user_id])
 			@location = Location.create(:latitude => params[:latitude], :longitude => params[:longitude], :user_id => @user.id)
@@ -32,12 +45,18 @@ class LocationsController < ApplicationController
 	end
 
 	def update
+		getLocation
+		@location = Location.find(params[:user_id])
+		@location.latitude = 1
+		@location.longitude = @longitude
+		redirect_to @location
+
 		if current_user
 			getLocation
 			@location = Location.find(params[:user_id])
-			@location.latitude = @latitude
+			@location.latitude = 1
 			@location.longitude = @longitude
-			@location.update
+			@location.update(1,1)
 			redirect_to user_path
 		else
 			@user = User.find(params[:user_id])
@@ -52,9 +71,9 @@ class LocationsController < ApplicationController
 
  	def destroy
  		if current_user
-			@location = Location.find(params[:user_id])
-			@location.destroy
-			redirect_to articles_path
+			@user = User.find(params[:user_id])
+			@user.location.destroy
+			redirect_to user_path(current_user)
 		else
 			redirect_to root_path
 		end

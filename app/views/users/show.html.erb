@@ -2,6 +2,13 @@
 <% if @user == current_user%>
   <p> This is you :D </p>
   <%= link_to "Update location", new_user_location_path(current_user) %>
-  <%= link_to "My location", user_location_path(current_user.id, 1) %>
+  <%= if @user.location
+      link_to "My location", user_location_path(current_user.id, current_user.location.id)
+    end %>
+  <%= if @user.location
+  link_to 'Remove location', user_location_path(current_user.id, current_user.location.id),
+          method: :delete,
+          data: { confirm: 'Are you sure?' }
+   end %>
 <% end %>
 <%= link_to "Saved Content", user_contents_path(@user) %>
