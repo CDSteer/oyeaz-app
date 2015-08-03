@@ -84,9 +84,10 @@ class LocationsController < ApplicationController
 		end
 
 		def compareLocation
+			check = false
 			if @user.location == User.find(3).location
-				return true
+				check = true
 			end
-				return false
+			return check
 		end
 end
