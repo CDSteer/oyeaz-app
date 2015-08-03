@@ -54,6 +54,7 @@ class LocationsController < ApplicationController
 						format.json { render :json => @js_response}
 						format.html
 					end
+				end
 			else
 				@location = Location.create(:latitude => params[:latitude], :longitude => params[:longitude], :user_id => @user.id)
 				@js_response = ActiveSupport::JSON.encode(@user.location)
