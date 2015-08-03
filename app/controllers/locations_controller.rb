@@ -36,7 +36,6 @@ class LocationsController < ApplicationController
 			@user = User.find(params[:user_id])
 			if @user.location
 				@location = @user.location.update(:latitude => params[:latitude], :longitude => params[:longitude], :user_id => @user.id)
-				compareLocation
 				@js_response = ActiveSupport::JSON.encode(@location)
 				respond_to do |format|
 					format.json { render :json => @js_response}
@@ -71,11 +70,11 @@ class LocationsController < ApplicationController
 			@longitude = @lat_lng.at(1)
 		end
 
-		def compareLocation
-			if @user.location == User.find(3).location
-				put "near"
-			else
-				put "not near"
-			end
-		end
+		# def compareLocation
+		# 	if @user.location == User.find(3).location
+		# 		put "near"
+		# 	else
+		# 		put "not near"
+		# 	end
+		# end
 end
