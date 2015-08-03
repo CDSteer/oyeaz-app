@@ -8,7 +8,13 @@ class LocationsController < ApplicationController
 		if current_user
 			@user = User.find(params[:user_id])
 		else
-			redirect_to root_path
+			@user = User.find(params[:user_id])
+			@js_response = ActiveSupport::JSON.encode(@user.location)
+			respond_to do |format|
+				format.json { render :json => @js_response}
+				format.html
+			end
+			# redirect_to root_path
 		end
 	end
 
@@ -36,14 +42,14 @@ class LocationsController < ApplicationController
 			@user = User.find(params[:user_id])
 			if @user.location
 				@location = @user.location.update(:latitude => params[:latitude], :longitude => params[:longitude], :user_id => @user.id)
-				@js_response = ActiveSupport::JSON.encode(@location)
+				@js_response = ActiveSupport::JSON.encode(@user.location)
 				respond_to do |format|
 					format.json { render :json => @js_response}
 					format.html
 				end
 			else
 				@location = Location.create(:latitude => params[:latitude], :longitude => params[:longitude], :user_id => @user.id)
-				@js_response = ActiveSupport::JSON.encode(@user)
+				@js_response = ActiveSupport::JSON.encode(@user.location)
 				respond_to do |format|
 					format.json { render :json => @js_response}
 					format.html
