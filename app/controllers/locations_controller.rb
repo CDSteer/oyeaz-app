@@ -43,17 +43,10 @@ class LocationsController < ApplicationController
 			if @user.location
 				@location = @user.location.update(:latitude => params[:latitude], :longitude => params[:longitude], :user_id => @user.id)
 				user2 = User.find(compareLocation)
-					@js_response = ActiveSupport::JSON.encode(user2)
-					respond_to do |format|
-						format.json { render :json => @js_response}
-						format.html
-					end
-				else
-					@js_response = ActiveSupport::JSON.encode(@user.location)
-					respond_to do |format|
-						format.json { render :json => @js_response}
-						format.html
-					end
+				@js_response = ActiveSupport::JSON.encode(user2)
+				respond_to do |format|
+					format.json { render :json => @js_response}
+					format.html
 				end
 			else
 				@location = Location.create(:latitude => params[:latitude], :longitude => params[:longitude], :user_id => @user.id)
