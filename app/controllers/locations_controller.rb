@@ -42,8 +42,8 @@ class LocationsController < ApplicationController
 			@user = User.find(params[:user_id])
 			if @user.location
 				@location = @user.location.update(:latitude => params[:latitude], :longitude => params[:longitude], :user_id => @user.id)
-				if compareLocation
-					@js_response = ActiveSupport::JSON.encode(Content.find(7))
+				user2 = User.find(compareLocation)
+					@js_response = ActiveSupport::JSON.encode(user2)
 					respond_to do |format|
 						format.json { render :json => @js_response}
 						format.html
@@ -85,9 +85,13 @@ class LocationsController < ApplicationController
 		end
 
 		def compareLocation
-			if @user.location.longitude == (User.find(3)).location.longitude
-				return true
-			end
-			return false
+			tree = Geokdtree::Tree.new(2)
+			tree.insert([@user.location.latitude, @user.location.longitude], @user.name)
+			tree.insert([(User.find(3)).location.latitude, (User.find(3)).location.longitude], 3)
+			results = tree.nearest_geo_range([@user.location.latitude, @user.location.longitude], 800)
+			puts(results.size) # => 1
+			puts(results[0].point.inspect)
+			puts(results[0].data.inspect)
+			return results[0].data.inspect
 		end
 end
