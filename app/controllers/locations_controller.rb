@@ -82,7 +82,7 @@ class LocationsController < ApplicationController
 			tree.insert([51.6097363, -3.9791250], 2)
 			tree.insert([(User.find(3)).location.latitude, (User.find(3)).location.longitude], 3)
 
-			results = tree.nearest_geo_range([@user.location.latitude, @user.location.longitude], 800)
+			results = tree.nearest_geo_range([@user.location.latitude, @user.location.longitude], 0.1)
 			puts(results.size) # => 1
 			puts(results[0].point.inspect)
 			puts(results[0].data.inspect)
