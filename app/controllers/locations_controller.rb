@@ -78,14 +78,18 @@ class LocationsController < ApplicationController
 		end
 
 		def compareLocation
-			tree = Geokdtree::Tree.new(2)
-			tree.insert([51.6097363, -3.9791250], 2)
-			tree.insert([(User.find(3)).location.latitude, (User.find(3)).location.longitude], 3)
-
+			tree = treeLocations
 			results = tree.nearest_geo_range([@user.location.latitude, @user.location.longitude], 0.1)
-			puts(results.size) # => 1
-			puts(results[0].point.inspect)
-			puts(results[0].data.inspect)
+			puts(results.size)
 			return results[0].data.inspect
+		end
+
+		def treeLocations
+			$i = 1
+			tree = Geokdtree::Tree.new(2)
+			while $i < User.count  do
+				tree.insert([(User.find($i)).location.latitude, (User.find($i)).location.longitude], $i)
+			end
+			return tree
 		end
 end
