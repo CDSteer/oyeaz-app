@@ -90,7 +90,8 @@ class LocationsController < ApplicationController
 			puts x
 			for i in 1..x
 				@myUser = User.find(i)
-				myLatitude = @myUser.location.latitude
+				myLatitude = 0
+				# @myUser.location.latitude
 				puts myLatitude
 				myLongitude = @myUser.location.longitude
 				puts myLongitude
