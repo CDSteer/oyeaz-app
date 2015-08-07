@@ -90,11 +90,11 @@ class LocationsController < ApplicationController
 			puts x
 			for i in 1..x
 				@myUser = User.find(i)
-				latitude = @myUser.location.latitude
-				puts latitude
-				longitude = @myUser.location.longitude
-				puts longitude
-				tree.insert([latitude, longitude], i)
+				myLatitude = @myUser.location.latitude
+				puts myLatitude
+				myLongitude = @myUser.location.longitude
+				puts myLongitude
+				tree.insert([myLatitude, myLongitude], i)
 			end
 			return tree
 		end
