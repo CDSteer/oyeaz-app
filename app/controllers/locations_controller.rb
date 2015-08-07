@@ -88,13 +88,11 @@ class LocationsController < ApplicationController
 			tree = Geokdtree::Tree.new(2)
 			x = User.count
 			puts x
-			for i in 1..x
+			for i in 1..3
 				@myUser = User.find_by_id(i)
-				myLatitude = 1
-				# @myUser.location.latitude
+				myLatitude = @myUser.location.latitude
 				puts myLatitude
-				myLongitude = 1
-				# @myUser.location.longitude
+				myLongitude = @myUser.location.longitude
 				puts myLongitude
 				tree.insert([myLatitude, myLongitude], i)
 			end
