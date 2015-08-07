@@ -89,7 +89,7 @@ class LocationsController < ApplicationController
 			x = User.count
 			puts x
 			for i in 1..x
-				tree.insert([(User.find($i)).location.latitude, (User.find($i)).location.longitude], $i)
+				tree.insert([(User.find(i)).location.latitude, (User.find(i)).location.longitude], i)
 			end
 			return tree
 		end
