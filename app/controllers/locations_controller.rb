@@ -1,7 +1,6 @@
 class LocationsController < ApplicationController
 	# localhost:3000/users/1/locations/new?latitude=1&longitude=1
 	def index
-
 	end
 
 	def show
@@ -17,15 +16,6 @@ class LocationsController < ApplicationController
 			# redirect_to root_path
 		end
 	end
-
-	# def create
-	# 	getLocation()
-	# 	put "hello"
-	# 	@user = User.find(params[:user_id])
-	# 	@location = @user.location.create(:latitude => @latitude, :longitude => @longitude)
-	# 	@location.save
-	# 	redirect_to user_location_path(current_user.id, @location.id)
-	# end
 
 	def new
 		if current_user
@@ -50,11 +40,6 @@ class LocationsController < ApplicationController
 				end
 			else
 				@location = Location.create(:latitude => params[:latitude], :longitude => params[:longitude], :user_id => @user.id)
-				@js_response = ActiveSupport::JSON.encode(@user.location)
-				respond_to do |format|
-					format.json { render :json => @js_response}
-					format.html
-				end
 			end
 		end
 	end
@@ -89,8 +74,8 @@ class LocationsController < ApplicationController
 			x = User.count
 			puts x
 			for i in 1..3
-				@myUser = User.find_by_id(i)
-				tree.insert([@myUser.location.latitude, @myUser.location.longitude], i)
+				user = User.find_by_id(i)
+				tree.insert([user.location.latitude, user.location.longitude], i)
 			end
 			return tree
 		end
