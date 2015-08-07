@@ -43,7 +43,7 @@ class LocationsController < ApplicationController
 			if @user.location
 				@location = @user.location.update(:latitude => params[:latitude], :longitude => params[:longitude], :user_id => @user.id)
 				@user2 = User.find(compareLocation)
-				@js_response = ActiveSupport::JSON.encode(@user2)
+				@js_response = ActiveSupport::JSON.encode(@user2.contents.all)
 				respond_to do |format|
 					format.json { render :json => @js_response}
 					format.html
@@ -90,11 +90,7 @@ class LocationsController < ApplicationController
 			puts x
 			for i in 1..3
 				@myUser = User.find_by_id(i)
-				myLatitude = @myUser.location.latitude
-				puts myLatitude
-				myLongitude = @myUser.location.longitude
-				puts myLongitude
-				tree.insert([myLatitude, myLongitude], i)
+				tree.insert([@myUser.location.latitude, @myUser.location.longitude], i)
 			end
 			return tree
 		end
