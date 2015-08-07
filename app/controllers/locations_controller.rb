@@ -89,7 +89,7 @@ class LocationsController < ApplicationController
 			x = User.count
 			puts x
 			for i in 1..x
-				@myUser = User.find(i)
+				@myUser = User.find_by_id(i)
 				myLatitude = 1
 				# @myUser.location.latitude
 				puts myLatitude
